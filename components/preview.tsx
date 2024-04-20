@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 
 interface PreviewProps {
@@ -12,5 +11,9 @@ export const Preview = ({ value }: PreviewProps) => {
     []
   );
 
-  return <ReactQuillComponent theme="bubble" value={value} readOnly />;
+  return <>
+  {
+    typeof window !== "undefined" && <ReactQuillComponent theme="bubble" value={value} readOnly />
+  }
+  </>;
 };
